@@ -1,6 +1,7 @@
+# my very first class
 class Planet
   attr_reader :name ,:travel_time, :length_of_day, :gravity_ratio, :mean_temperature# degrees C
-  
+
   def initialize(hash)
     @name = hash[:planet].capitalize.to_sym
     @gravity_ratio = hash[:gravity] / 9.8
@@ -8,7 +9,7 @@ class Planet
     @mean_temperature =  hash[:temp]
     @travel_time = hash[:time]
   end
-  
+
   def print_journey(weight)
     puts "\nIt will take us #{@travel_time} to get to #{@name.capitalize}.  The mean temperature will be #{@mean_temperature} degrees C, and one \"day\" \(planet rotation\) will be equal to #{@length_of_day} earth hours.  You will weigh #{sprintf("%.1f", weight * @gravity_ratio)} pounds\n\n"
   end
@@ -32,11 +33,11 @@ pluto = Planet.new(planet:"pluto", gravity: 11.0, day_length: 153.3, temp: -200,
 
 class SolarSystem
   attr_reader :solar_system
-  
+
   def initialize
     @solar_system = []
   end
-  
+
   def add_planet(planet)
     if planet.is_a? (Array)
       planet.each do |new_planet|
@@ -46,13 +47,13 @@ class SolarSystem
       @solar_system << planet
     end
   end
-  
+
   def print_all_planets
     @solar_system.each do |new_planet|
       print "#{new_planet.name}, "
     end
   end
-  
+
   def valid_planet?(destino)
     @solar_system.each do |new_planet|
       if new_planet.name.to_s == destino
@@ -63,7 +64,7 @@ class SolarSystem
     print "I'm sorry...I don't know how to get to #{destino}"
     return false
   end
-  
+
   def subset_planet(destino, wt)
     @solar_system.each do |new_planet|
       if new_planet.name.to_s == destino
